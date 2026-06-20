@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "pvpclient",
+	"version": "1.0.0",
+	"name": "PvP Client",
+	"description": "Client PvP/Utility legittimo con HUD personalizzabile e ottimizzazioni FPS per Minecraft 26.1.2",
+	"authors": [
+		"PvPClient Team"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"com.pvpclient.PvPClientMod"
+		],
+		"client": [
+			"com.pvpclient.PvPClient"
+		]
+	},
+	"mixins": [
+		"pvpclient.mixins.json",
+		{
+			"config": "pvpclient.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
