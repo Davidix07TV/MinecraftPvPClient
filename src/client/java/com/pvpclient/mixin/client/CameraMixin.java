@@ -11,14 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Camera.class)
 public class CameraMixin {
-    @Shadow private float yaw;
-    @Shadow private float pitch;
+    @Shadow private float xRot;
+    @Shadow private float yRot;
 
     @Inject(method = "update", at = @At("TAIL"))
     private void pvpclient$afterUpdate(CallbackInfo ci) {
         if (FreelookHandler.INSTANCE.isActive()) {
-            this.yaw = FreelookHandler.INSTANCE.getCameraYaw();
-            this.pitch = FreelookHandler.INSTANCE.getCameraPitch();
+            this.yRot = FreelookHandler.INSTANCE.getCameraYaw();
+            this.xRot = FreelookHandler.INSTANCE.getCameraPitch();
         }
     }
 }

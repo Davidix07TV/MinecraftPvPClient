@@ -14,20 +14,19 @@ public class LocalPlayerMixin {
     private float pvpclient$preTurnPitch;
 
     @Inject(method = "turn", at = @At("HEAD"))
-    private void pvpclient$beforeTurn(float yaw, float pitch, CallbackInfo ci) {
+    private void pvpclient$beforeTurn(double yaw, double pitch, CallbackInfo ci) {
         LocalPlayer self = (LocalPlayer)(Object)this;
-        pvpclient$preTurnYaw = self.getYaw();
-        pvpclient$preTurnPitch = self.getPitch();
+        pvpclient$preTurnYaw = self.getYRot();
+        pvpclient$preTurnPitch = self.getXRot();
     }
 
     @Inject(method = "turn", at = @At("RETURN"))
-    private void pvpclient$afterTurn(float yaw, float pitch, CallbackInfo ci) {
+    private void pvpclient$afterTurn(double yaw, double pitch, CallbackInfo ci) {
         if (FreelookHandler.INSTANCE.isActive()) {
             LocalPlayer self = (LocalPlayer)(Object)this;
-            // let camera use the new rotation, but restore player rotation to saved server-facing values
-            FreelookHandler.INSTANCE.setCameraRotation(self.getYaw(), self.getPitch());
-            self.setYaw(FreelookHandler.INSTANCE.getSavedYaw());
-            self.setPitch(FreelookHandler.INSTANCE.getSavedPitch());
+            FreelookHandler.INSTANCE.setCameraRotation(self.getYRot(), self.getXRot());
+            self.setYRot(FreelookHandler.INSTANCE.getSavedYaw());
+            self.setXRot(FreelookHandler.INSTANCE.getSavedPitch());
         }
     }
 }
