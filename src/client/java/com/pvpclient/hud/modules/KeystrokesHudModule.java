@@ -65,6 +65,6 @@ public final class KeystrokesHudModule implements HudModule {
 		int textWidth = minecraft.font.width(label);
 		int textX = x + (KEY_SIZE - textWidth) / 2;
 		int textY = y + (KEY_SIZE - minecraft.font.lineHeight) / 2;
-		graphics.text(minecraft.font, label, textX, textY, LABEL_COLOR, false);
+		graphics.text(minecraft.font, label, textX, textY, LABEL_COLOR, true);
 	}
 }

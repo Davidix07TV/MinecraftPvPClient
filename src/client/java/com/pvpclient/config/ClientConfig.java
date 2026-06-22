@@ -26,4 +26,21 @@ public final class ClientConfig {
 
 	private ClientConfig() {
 	}
+
+	public void syncFrom(Config cfg) {
+		this.cpsEnabled = cfg.cps.enabled;
+		this.fpsEnabled = cfg.fps.enabled;
+		this.keystrokesEnabled = cfg.keystrokes.enabled;
+
+		this.cpsX = cfg.cps.x;
+		this.cpsY = cfg.cps.y;
+		this.fpsX = cfg.fps.x;
+		this.fpsY = cfg.fps.y;
+		this.keystrokesX = cfg.keystrokes.x;
+		this.keystrokesY = cfg.keystrokes.y;
+
+		this.disableParticles = cfg.disableParticles;
+		this.disableWeather = cfg.disableWeather;
+		this.disableRainParticles = cfg.disableRainParticles;
+	}
 }
