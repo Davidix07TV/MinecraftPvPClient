@@ -1,49 +1,49 @@
-# PvP Client v1.0.0 - Release Notes
+# PvP Client v1.0.0 - Note di rilascio
 
-**Minecraft Version**: 26.1.2  
+**Versione Minecraft**: 26.1.2  
 **Fabric Loader**: 0.19.3  
 **Fabric API**: 0.151.0+26.1.2  
-**Java**: JDK 25 (or compatible)
+**Java**: JDK 25 (o compatibile)
 
-## Features
+## Funzionalità
 
-### ✅ Implemented
-- **Advanced HUD System**: Modular design with CPS, FPS, and Keystrokes counters
-- **Configuration System (GSON)**: Persistent JSON config at `config/pvpclient_hud_config.json`
-  - Per-module settings: position (x, y), color, background toggle
-  - Color presets: White, Red, Green, Blue, Chroma (rainbow)
-- **Visual Enhancements**
-  - Drop-shadow text rendering for all HUD elements
-  - Semi-transparent background boxes with padding
-  - Chroma/rainbow color cycling support
-- **CPS Tracker**: Left/Right mouse button click counting
+### ✅ Implementato
+- **Sistema HUD avanzato**: design modulare con contatori CPS, FPS e Keystrokes
+- **Sistema di configurazione (GSON)**: config JSON persistente in `config/pvpclient_hud_config.json`
+  - Impostazioni per modulo: posizione (x, y), colore, attivazione dello sfondo
+  - Preset colore: Bianco, Rosso, Verde, Blu, Chroma (arcobaleno)
+- **Migliorie visive**
+  - Testo con ombra per tutti gli elementi HUD
+  - Riquadri di sfondo semi-trasparenti con padding
+  - Supporto chroma/arcobaleno
+- **Tracker CPS**: conteggio click dei pulsanti sinistro/destro del mouse
 
-### 🔄 Deferred (MC 26.1.2 Compatibility Pending)
-- HUD Editor Screen (Screen API - requires Fabric screen migration)
-- Freelook Feature / Perspective Mod (requires proper entity rotation method bindings)
-- Camera Mixin (requires Camera field access patterns)
+### 🔄 Differito (compatibilità MC 26.1.2 in sospeso)
+- Schermata dell’editor HUD (Screen API - richiede migrazione Fabric)
+- Funzionalità Freelook / modifica prospettiva (richiede binding di rotazione entità corretti)
+- Camera Mixin (richiede pattern di accesso ai campi della camera)
 
-## Installation
+## Installazione
 
-1. **Prerequisites**
-   - Minecraft Launcher (or compatible launcher)
-   - Java 25 or later
+1. **Prerequisiti**
+   - Minecraft Launcher (o launcher compatibile)
+   - Java 25 o successivo
    - Fabric Loader 0.19.3
 
-2. **Download Dependencies**
+2. **Scarica le dipendenze**
    - Fabric Loader: https://fabricmc.net/use/installer/
    - Fabric API 0.151.0+26.1.2: https://modrinth.com/mod/fabric-api
 
-3. **Install**
-   - Place `pvpclient-1.0.0.jar` in `%appdata%/.minecraft/mods/` (or equivalent)
-   - Place Fabric API JAR in the same mods folder
-   - Ensure Fabric Loader is set as the game loader
+3. **Installazione**
+   - Metti `pvpclient-1.0.0.jar` in `%appdata%/.minecraft/mods/` (o equivalente)
+   - Metti il JAR di Fabric API nella stessa cartella `mods`
+   - Assicurati che Fabric Loader sia impostato come loader di gioco
 
-4. **First Launch**
-   - The mod will auto-generate `config/pvpclient_hud_config.json`
-   - Configure HUD modules via manual JSON editing (UI pending implementation)
+4. **Primo avvio**
+   - La mod genererà automaticamente `config/pvpclient_hud_config.json`
+   - Configura i moduli HUD modificando manualmente il JSON (UI in sospeso)
 
-## Configuration Example
+## Esempio di configurazione
 
 ```json
 {
@@ -77,7 +77,7 @@
 }
 ```
 
-## Build Instructions
+## Istruzioni di build
 
 ```bash
 ./gradlew build
@@ -87,21 +87,21 @@ Output: `build/libs/pvpclient-1.0.0.jar`
 
 ## Roadmap (v1.1+)
 
-- [ ] Full HUD Editor Screen with drag-and-drop positioning
-- [ ] Freelook / Perspective Mod (Left ALT keybind, configurable)
-- [ ] Color picker UI in HUD editor
-- [ ] Camera decoupling via proper mixins
-- [ ] Keybind registration (RSHIFT for editor, Left ALT for freelook)
-- [ ] Client tick event integration
+- [ ] Schermata editor HUD completa con drag-and-drop
+- [ ] Freelook / modifica prospettiva (tasto Left ALT configurabile)
+- [ ] Selettore colore UI nell'editor HUD
+- [ ] Decoupling della camera tramite mixin adeguati
+- [ ] Registrazione keybind (RSHIFT per editor, Left ALT per freelook)
+- [ ] Integrazione eventi tick lato client
 
-## License
+## Licenza
 
-See LICENSE file in repository.
+Vedi il file LICENSE nel repository.
 
-## Author
+## Autore
 
 Davidix07TV
 
 ---
 
-**Note**: Features marked as "Deferred" require migration to Minecraft 26.1.2-compatible Fabric APIs. Contributions welcome!
+**Nota**: le funzionalità contrassegnate come "Differito" richiedono la migrazione alle API Fabric compatibili con Minecraft 26.1.2. Contributi benvenuti!

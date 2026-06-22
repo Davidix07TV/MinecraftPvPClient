@@ -7,11 +7,11 @@ import com.pvpclient.config.ClientConfig;
 import com.pvpclient.features.FreelookHandler;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.minecraft.client.KeyMapping;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.Minecraft;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +26,8 @@ public class PvPClient implements ClientModInitializer {
 	private final HudManager hudManager = new HudManager();
 
 	// keybinds
-	public static KeyBinding HUD_EDITOR_KEY;
-	public static KeyBinding FREELOOK_KEY;
+	public static KeyMapping HUD_EDITOR_KEY;
+	public static KeyMapping FREELOOK_KEY;
 
 	@Override
 	public void onInitializeClient() {
@@ -39,13 +39,13 @@ public class PvPClient implements ClientModInitializer {
 		hudManager.register();
 
 		// register keybinds
-		HUD_EDITOR_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.pvpclient.hud_editor", InputUtil.Type.KEYSYM, org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT, "category.pvpclient"));
-		FREELOOK_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.pvpclient.freelook", InputUtil.Type.KEYSYM, org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_ALT, "category.pvpclient"));
+		HUD_EDITOR_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.pvpclient.hud_editor", InputConstants.Type.KEYSYM, org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT, KeyMapping.Category.MISC));
+		FREELOOK_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.pvpclient.freelook", InputConstants.Type.KEYSYM, org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_ALT, KeyMapping.Category.MISC));
 
 		// client tick: listen for HUD editor toggle and freelook polling
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			while (HUD_EDITOR_KEY.wasPressed()) {
-				MinecraftClient mc = MinecraftClient.getInstance();
+			while (HUD_EDITOR_KEY.consumeClick()) {
+				Minecraft mc = Minecraft.getInstance();
 				mc.setScreen(new HudEditorScreen());
 			}
 

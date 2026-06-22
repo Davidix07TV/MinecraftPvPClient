@@ -1,8 +1,8 @@
 package com.pvpclient.features;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.player.LocalPlayer;
 
 public final class FreelookHandler {
     public static final FreelookHandler INSTANCE = new FreelookHandler();
@@ -15,24 +15,22 @@ public final class FreelookHandler {
 
     private FreelookHandler() {}
 
-    public void onTick(KeyBinding key) {
-        MinecraftClient mc = MinecraftClient.getInstance();
-        if (mc.player == null) return;
+    public void onTick(KeyMapping key) {
+        Minecraft mc = Minecraft.getInstance();
+        LocalPlayer player = mc.player;
+        if (player == null) return;
 
-        boolean pressed = key.isPressed();
+        boolean pressed = key.isDown();
         if (pressed && !active) {
-            // start freelook
             active = true;
-            savedYaw = mc.player.getYaw();
-            savedPitch = mc.player.getPitch();
+            savedYaw = player.getYRot();
+            savedPitch = player.getXRot();
             cameraYaw = savedYaw;
             cameraPitch = savedPitch;
         } else if (!pressed && active) {
-            // end freelook, smoothly snap back
             active = false;
-            // simple snap: restore player rotation
-            mc.player.setYaw(savedYaw);
-            mc.player.setPitch(savedPitch);
+            player.setYRot(savedYaw);
+            player.setXRot(savedPitch);
         }
     }
 
