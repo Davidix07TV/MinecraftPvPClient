@@ -17,11 +17,9 @@
   - Riquadri di sfondo semi-trasparenti con padding
   - Supporto chroma/arcobaleno
 - **Tracker CPS**: conteggio click dei pulsanti sinistro/destro del mouse
-
-### 🔄 Differito (compatibilità MC 26.1.2 in sospeso)
-- Schermata dell’editor HUD (Screen API - richiede migrazione Fabric)
-- Funzionalità Freelook / modifica prospettiva (richiede binding di rotazione entità corretti)
-- Camera Mixin (richiede pattern di accesso ai campi della camera)
+- **Schermata dell'editor HUD** (beta): interfaccia di posizionamento drag-and-drop per i moduli HUD, migrata alle API Screen moderne di Minecraft 26.1.2
+- **Funzionalità Freelook** (beta): toggle configurabile (predefinito Left ALT) per visuale libera indipendente; non modifica l'orientamento del giocatore
+- **Camera Mixin e Player Mixin**: implementati pattern di accesso ai campi della camera (`xRot`/`yRot`) e metodi di rotazione (`turn(double,double)`) per supportare Freelook
 
 ## Installazione
 
@@ -87,12 +85,13 @@ Output: `build/libs/pvpclient-1.0.0.jar`
 
 ## Roadmap (v1.1+)
 
-- [ ] Schermata editor HUD completa con drag-and-drop
-- [ ] Freelook / modifica prospettiva (tasto Left ALT configurabile)
-- [ ] Selettore colore UI nell'editor HUD
-- [ ] Decoupling della camera tramite mixin adeguati
-- [ ] Registrazione keybind (RSHIFT per editor, Left ALT per freelook)
-- [ ] Integrazione eventi tick lato client
+- [ ] Test in-game completo e bug fix per editor HUD e freelook
+- [ ] Indicatore HUD visuale per stato Freelook (on/off)
+- [ ] Selettore colore UI integrato nell'editor HUD (attualmente configurazione JSON)
+- [ ] Snap-to-grid e guide visive per posizionamento moduli
+- [ ] Export/import preset layout HUD
+- [ ] Aggiunta più preset colore (gradients, animazioni)
+- [ ] Compatibilità versioni Minecraft future (adattamento API)
 
 ## Licenza
 
@@ -104,4 +103,4 @@ Davidix07TV
 
 ---
 
-**Nota**: le funzionalità contrassegnate come "Differito" richiedono la migrazione alle API Fabric compatibili con Minecraft 26.1.2. Contributi benvenuti!
+**Note di rilascio**: v1.0.0 include l'implementazione completa del sistema HUD, freelook e camera mixin per Minecraft 26.1.2. Le funzionalità sono state migrate alle API Fabric compatibili e testate a livello di compilazione. **Test in-game consigliato** per verificare il comportamento visuale di drag-and-drop dell'editor HUD e la rotazione della camera in modalità Freelook. Segnala bug o suggerimenti aprendo un issue.
